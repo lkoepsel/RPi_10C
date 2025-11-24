@@ -12,13 +12,23 @@ git clone https://github.com/lkoepsel/RPi_10C.git
 
 ### 2. Test
 
-Connect an Arduino Uno then run
+**Connect an Arduino Uno then run:**
 ```bash
 cd RPi_10C/examples/blink
 make flash
 ```
 
 ### 3. Connect via VS Code
+
+Shift-Command/Control-P
+Remote-SSH: Connect to Host
+studentn@pidev-n.local
+password
+
+Open folder RPi_10C
+Use the Explorer to open examples/blink/main.c
+Shift-Command/Control-B
+flash
 
 
 ## Introduction

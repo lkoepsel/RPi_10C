@@ -1,7 +1,8 @@
-# Raspberry Pi Setup for 10C Labs for the Arduino Uno R3
+# Raspberry Pi Setup for Arduino Uno R3 C Development
 
 ## Connect via Raspberry Connect
 
+**NOTE:** In the instructions below, **Command/Control** means, in **macOS**, *press the `command` key* and in **Windows**, *press the `Control` key*.
 ### 1. Copy and Paste:
 
 ```bash
@@ -12,23 +13,33 @@ git clone https://github.com/lkoepsel/RPi_10C.git
 
 ### 2. Test
 
-**Connect an Arduino Uno then run:**
+    ```bash
+    # Connect an Arduino Uno via USB cable and run:
+    cd RPi_10C/examples/blink
+    make flash
+    ```
+
+### 3. Remote Connect via VS Code
+**VS Code will require the following extensions:**
 ```bash
-cd RPi_10C/examples/blink
-make flash
+ms-vscode-remote.remote-containers
+ms-vscode-remote.remote-ssh
+ms-vscode-remote.remote-ssh-edit
+ms-vscode.cpptools
+ms-vscode.cpptools-themes
+ms-vscode.remote-explorer
 ```
 
-### 3. Connect via VS Code
+**Please install the above extensions before continuing.**
 
-Shift-Command/Control-P
-Remote-SSH: Connect to Host
-studentn@pidev-n.local
-password
-
-Open folder RPi_10C
-Use the Explorer to open examples/blink/main.c
-Shift-Command/Control-B
-flash
+1. `File -> New Window`
+2. `Shift-Command/Control-P`
+3. Enter "*remo*" and click on **Remote-SSH: Connect to Host**
+4. Enter *studentn@pidev-n.local*, where **n** is the number on your Raspberry Pi
+5. Enter password
+6. Open folder RPi_10C and OK to "*Trust...authors*"
+7. Use the `Explorer` to open *examples/blink/main.c*
+8. `Shift-Command/Control-B` and click on *flash*
 
 
 ## Introduction
@@ -54,7 +65,7 @@ In order to use this content you need to have the following installed on **your*
 
 * *examples* - contains code demonstrating how to use specific functions in the Library
 * *Library* - *AVR C Library*, specific Arduino functions rewritten in *C* such as analogRead(), analogWrite(), digitalRead(), and pinMode()
-* *templates* - template directories for each of the lab execises. This directory must be duplicated to be used and called *dev*. **This directory is tracked by git and could be over-written in the next clone operation.**
+* *templates* - template directories for each of the lab exercises. This directory must be duplicated to be used and called *dev*. **This directory is tracked by git and could be over-written in the next clone operation.**
 * *dev* - the student's version of the templates directory, where the students will make changes to the lab files. **This directory is not tracked by git and won't be overwritten.**
 
 ## Installation

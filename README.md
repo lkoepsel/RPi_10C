@@ -37,9 +37,9 @@ ms-vscode.remote-explorer
 1. `Shift-command/Control-P`
 2. Enter "*remo*" and click on **Remote-SSH: Connect to Host**
 3. Enter *studentn@pidev-n.local*, where **n** is the number on your Raspberry Pi
-4. Click `continue` on *Are you sure you want to connect?*
+4. Click `Continue` on *Are you sure you want to continue?*
 5. Enter password
-6. Click on **Open Folder** -> **RPi_10C** -> **OK** to "*Trust...authors*"
+6. Click on **Open Folder** -> **RPi_10C** -> **OK** and might need to click **Yes** to "*Trust...authors*"
 7. Use the `Explorer` to open *examples/blink/main.c*
 8. Change the *200* on line 10, to *2000* and `command/Control-s` to save the file
 9. `Shift-command/Control-B` and click on *flash*

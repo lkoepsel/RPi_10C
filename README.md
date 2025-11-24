@@ -13,11 +13,13 @@ git clone https://github.com/lkoepsel/RPi_10C.git
 
 ### 2. Test
 
-    ```bash
-    # Connect an Arduino Uno via USB cable and run:
-    cd RPi_10C/examples/blink
-    make flash
-    ```
+```bash
+# Connect an Arduino Uno via USB cable and run:
+cd RPi_10C/examples/blink
+make flash
+```
+
+**The Uno will be blinking at a fast rate.**
 
 ### 3. Remote Connect via VS Code
 **VS Code will require the following extensions:**
@@ -32,15 +34,19 @@ ms-vscode.remote-explorer
 
 **Please install the above extensions before continuing.**
 
-1. `File -> New Window`
-2. `Shift-Command/Control-P`
-3. Enter "*remo*" and click on **Remote-SSH: Connect to Host**
-4. Enter *studentn@pidev-n.local*, where **n** is the number on your Raspberry Pi
+1. `Shift-command/Control-P`
+2. Enter "*remo*" and click on **Remote-SSH: Connect to Host**
+3. Enter *studentn@pidev-n.local*, where **n** is the number on your Raspberry Pi
+4. Click `continue` on *Are you sure you want to connect?*
 5. Enter password
-6. Open folder RPi_10C and OK to "*Trust...authors*"
+6. Click on **Open Folder** -> **RPi_10C** -> **OK** to "*Trust...authors*"
 7. Use the `Explorer` to open *examples/blink/main.c*
-8. `Shift-Command/Control-B` and click on *flash*
+8. Change the *200* on line 10, to *2000* and `command/Control-s` to save the file
+9. `Shift-command/Control-B` and click on *flash*
 
+**Now the Uno will be blinking at a much slower rate.**
+
+If you were successful in getting the Uno to blink both fast and slow, you are now ready to begin programming!
 
 ## Introduction
 This repository is for an introductory course on the *C* language using the Arduino Uno, the *C* tool chain (avr-gcc, avrdude etc) and the [*AVR C Library*](https://github.com/lkoepsel/AVR_C). The content is for students who desire understanding *C* using an embedded microcontroller, in this case the *Arduino Uno R3*. This content uses the *avr* tool chain via command line (also called the *terminal*), it doesn't use the Arduino IDE GUI nor does it use the Arduino software framework.  

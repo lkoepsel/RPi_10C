@@ -1,0 +1,8 @@
+{
+  "unwantedRecommendations": [
+    "qili.vscode-lc3",
+    "yzane.markdown-pdf",
+    "marp-team.marp-vscode"
+  ],
+  "ignoreRecommendations": true
+}

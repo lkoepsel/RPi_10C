@@ -1,0 +1,63 @@
+{
+    "files.associations": {
+        "*.make": "makefile",
+        "*.S": "avr",
+        "xarm.h": "c"
+    },
+    "cSpell.words": [
+        "Adafruit",
+        "AREF",
+        "atmega",
+        "Atmel",
+        "cppcheck",
+        "Datasheet",
+        "functionname",
+        "getchar",
+        "invalidscanf",
+        "Libc",
+        "makefiles",
+        "Mersenne",
+        "microcontroller",
+        "Microcontrollers",
+        "millis",
+        "minicom",
+        "MPLAB",
+        "objdump",
+        "oneline",
+        "Optiboot",
+        "outerpins",
+        "Pico",
+        "Pmem",
+        "PULLUP",
+        "pushbuttons",
+        "recompiles",
+        "scanf",
+        "serialio",
+        "sysclock",
+        "tinymt",
+        "uart",
+        "unolib",
+        "usbserial",
+        "wrapprint",
+        "Wundef",
+        "Xplained"
+    ],
+  "extensions.ignoreRecommendations": true,
+  // to disable specific extensions:
+  "extensions.disabled": [
+    "qili.vscode-lc3",
+    "yzane.markdown-pdf",
+    "marp-team.marp-vscode",
+    "paulober.pico-w-go"
+  ],
+    "markdown-pdf.format": "Letter",
+    "markdown-pdf.margin.top": ".25in",
+    "markdown-pdf.margin.bottom": ".25in",
+    "markdown-pdf.margin.right": ".25in",
+    "markdown-pdf.margin.left": ".25in",
+    "markdown-pdf.styles": 
+    [
+    "./.vscode/markdown-pdf.css"
+    ]
+
+}

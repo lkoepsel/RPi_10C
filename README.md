@@ -1,5 +1,23 @@
-# MPC 10C Labs for the Arduino Uno R3
-### Using *C*: Classroom Edition Fall 2024
+# Raspberry Pi Setup for 10C Labs for the Arduino Uno R3
+
+## Connect via Raspberry Connect
+
+### 1. Copy and Paste:
+
+```bash
+sudo apt update && sudo apt upgrade -y &&
+sudo apt-get install gcc-avr binutils-avr avr-libc gdb-avr avrdude git tio -y &&
+git clone https://github.com/lkoepsel/RPi_10C.git
+```
+
+### 2. Test
+
+Connect an Arduino Uno then run
+```bash
+cd RPi_10C/examples/blink
+make flash
+```
+
 
 ## Introduction
 This repository is for an introductory course on the *C* language using the Arduino Uno, the *C* tool chain (avr-gcc, avrdude etc) and the [*AVR C Library*](https://github.com/lkoepsel/AVR_C). The content is for students who desire understanding *C* using an embedded microcontroller, in this case the *Arduino Uno R3*. This content uses the *avr* tool chain via command line (also called the *terminal*), it doesn't use the Arduino IDE GUI nor does it use the Arduino software framework.  

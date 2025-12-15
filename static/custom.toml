@@ -1,0 +1,4 @@
+[wlan0]
+ssid = "mpc-wifi"
+key_mgmt = "NONE"
+country = "US"

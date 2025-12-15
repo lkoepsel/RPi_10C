@@ -197,3 +197,39 @@ Your screen now similar to this, with *Editor* on the left and *Terminal* on the
 * *Library* - *AVR C Library*, specific Arduino functions rewritten in *C* such as analogRead(), analogWrite(), digitalRead(), and pinMode()
 * *templates* - template directories for each of the lab exercises. This directory must be duplicated to be used and called *dev*. **This directory is tracked by git and could be over-written in the next clone operation.**
 * *dev* - the student's version of the templates directory, where the students will make changes to the lab files. **This directory is not tracked by git and won't be overwritten.**
+
+## Solutions
+
+### Connecting to a new open wireless network
+
+#### 1. Open *network-config* on the boot partition (*bootfs*) on *Windows/macOS* and change it to the following:
+
+(added renderer: NetworkManager, per the RPi OS documentation)
+```bash
+network:
+  version: 2
+  wifis:
+    renderer: NetworkManager
+    wlan0:
+      dhcp4: true
+      regulatory-domain: "US"
+      access-points:
+        "mpc-wifi":
+          password: ""
+      optional: true
+```
+has yet to work.
+
+#### 2. Connect via ethernet and enter
+
+```bash
+sudo nmcli radio wifi on
+sudo nmcli dev wifi connect mpc-wifi password ""
+```
+
+#### 3. Use `sudo nmtui` to activate the mpc-wifi connection.
+Then disconnect ethernet and connect via wireless.
+
+#### 4. Follow the Netplan concept [here](https://www.raspberrypi.com/news/cloud-init-on-raspberry-pi-os/)
+
+Try to create the proper config using `sudo netplan generate` or by adding *netplan-* to the beginning of the configuration.

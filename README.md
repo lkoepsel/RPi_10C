@@ -200,25 +200,24 @@ Your screen now similar to this, with *Editor* on the left and *Terminal* on the
 
 ## Solutions
 
-### Connecting to a new open wireless network
+### Connecting to initial wireless connection (*in order of preference*)
 
-#### 1. Open *network-config* on the boot partition (*bootfs*) on *Windows/macOS* and change it to the following:
+#### 1. Prior to initial boot, edit *network-config*
 
-(added renderer: NetworkManager, per the RPi OS documentation)
+Open *network-config* on the boot partition (*bootfs*) on *Windows/macOS* and change it to the following:
+
 ```bash
-network:
-  version: 2
-  wifis:
-    renderer: NetworkManager
-    wlan0:
-      dhcp4: true
-      regulatory-domain: "US"
-      access-points:
-        "mpc-wifi":
-          password: ""
-      optional: true
+version: 2
+wifis:
+  wlan0:
+    dhcp4: true
+    optional: true
+    regulatory-domain: US
+    access-points:
+      "mpc-wifi":
+        auth:
+          key-management: none
 ```
-has yet to work.
 
 #### 2. Connect via ethernet and enter
 
@@ -227,9 +226,9 @@ sudo nmcli radio wifi on
 sudo nmcli dev wifi connect mpc-wifi password ""
 ```
 
-#### 3. Use `sudo nmtui` to activate the mpc-wifi connection.
-Then disconnect ethernet and connect via wireless.
+Then disconnect ethernet and cycle power
 
-#### 4. Follow the Netplan concept [here](https://www.raspberrypi.com/news/cloud-init-on-raspberry-pi-os/)
+#### 3. Connect via ethernet and use `sudo nmtui` to activate the mpc-wifi connection.
 
-Try to create the proper config using `sudo netplan generate` or by adding *netplan-* to the beginning of the configuration.
+Then disconnect ethernet and cycle power
+

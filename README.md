@@ -200,12 +200,12 @@ Your screen now similar to this, with *Editor* on the left and *Terminal* on the
 
 ## Solutions
 
-### Connecting to initial wireless connection (*in order of preference*)
+### Connecting to open wireless connection (*in order of preference*)
 
 ### NOTE: 251217
-Filed bug with github/pi_imager and immediate response was the bug had been fixed for the next release (2.0.3). Will confirm. Then delete these solutions.
+A bug exists in the Pi Imager 2.0.2 software, where the password on an open wireless network is set to "". This is incorrect, it needs to be changed via auth -> key-management "none". See [OPEN NETWORK...](https://github.com/raspberrypi/rpi-imager/issues/1396). Immediate response to the bug was, it had been fixed for the next release (2.0.3). Will confirm. Then delete these solutions.
 
-In the meantime, solution 1, is the best approach and has been confirmed multiple times.
+In the meantime, this is the best approach and has been confirmed to work, multiple times:
 
 #### 1. Prior to initial boot, edit *network-config*
 

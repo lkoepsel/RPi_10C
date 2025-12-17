@@ -9,30 +9,30 @@ The directory, *templates*, contains the programs for labs. Each template folder
 
 These instructions assume you already have an *Arduino Uno R3* (or similar microcontroller) or will have one supplied to you.
 
-### Raspberry Pi
+### 1. Raspberry Pi
 The approach this class follows is to use a standardized platform running the *C* tool chain. This removes the pain of having to maintain documentation and support for each of the major computing platforms, *macOS*, *Windows* and *Linux*. Instead, the platform will be an inexpensive **Raspberry Pi (RPi)** running *Raspberry Pi OS* with all of the required programs pre-installed.
 
-### VS Code
+### 2. VS Code
 In order to use this content you need to have [**VS Code**](https://code.visualstudio.com) installed on **your** computer or a computer you will be using in class. We will use both the *VS Code editor* and *VS Code Terminal* or command line interface (*CLI*), connected remotely to the  RPi.
 
-### Raspberry Pi Login
+### 3. Raspberry Pi Connect Login
 You will also need a Raspberry Pi Connect login. You may obtain one for free [here](https://connect.raspberrypi.com).
 
 ## Installation
 
 ### 1. Use Pi Imager v2.0+ for creating Raspberry Pi OS Image
 
-Before starting insert your *SD Card* or *USB Drive* for the Raspberry Pi into your computer or SD Card interface. You will need to enter the appropriate information as requested, such as your timezone, username, password etc.
+Before starting insert your *SD Card* or *USB Drive* for the Raspberry Pi into your computer or SD Card interface. In the steps below, you will need to enter the appropriate information as requested, such as your timezone, username, password etc.
 
-1. Open *Pi Imager*
+1. Open *Pi Imager* (**it must be v2.0 or greater**)
 2. Select your device -> Next
-3. Select Raspberry Pi OS (other) -> Raspberry Pi OS Lite (64-bit) -> Next
+3. Select Raspberry Pi OS (other) -> **Raspberry Pi OS Lite (64-bit)** -> Next
 4. Select Your Storage Device (*this will be the *SD card* or *USB Drive* from above*) -> Next
 5. Choose Hostname -> Next
 6. Select:
     * Capital city:
     * Time zone:
-    * Keyboard layout: us -> Next
+    * Keyboard layout: **us** -> Next
 7. Enter:
     * Username:
     * Password
@@ -59,11 +59,12 @@ Your *connect* page needs to indicate it has found your Raspberry Pi as indicate
 **NOTE:** In the instructions below, **Command/Control** means, in **macOS**, *press the `command` key* and in **Windows**, *press the `Control` key*.
 
 This step will connect you to the Raspberry Pi using the *command line interface* in your browser window.
-#### 1. Connect
+
+#### 1. **Connect**
 
 Click on the connect button as shown above. This will open a small browser window showing a terminal interface or *CLI* for the *RPi*.
 
-#### 2. Copy and Paste:
+#### 2. **Copy and Paste**
 
 ```bash
 sudo apt update && sudo apt upgrade -y &&
@@ -73,7 +74,7 @@ git clone https://github.com/lkoepsel/RPi_10C.git
 
 Copy and paste the text above then hit return. This action will take several minutes.
 
-#### 3. Obtain Uno device address
+#### 3. **Obtain Uno device address**
 
 ```bash
 # Connect an Arduino Uno via USB cable and run:
@@ -83,6 +84,8 @@ Under **Device** will be something like:
 */dev/ttyUSB0* or */dev/ttyACM0*. 
 
 Copy this string, we'll refer to it as **DEVICE**.
+
+#### 4. **Confirm or change the **DEVICE** address**
 
 In the CLI, do the following:
 ``` bash
@@ -94,22 +97,22 @@ You will now be in the RPi_10C folder and will need to edit the env.make file.
 nano env.make
 ```
 
-1. Use your arrow keys to move down to line 42
-2. You use left/right arrow keys to edit the line
-3. The line will look like this: 
-    `SERIAL = /dev/ttyACM0`
-4. Either confirm SERIAL equals DEVICE found above
- **OR**
-5. overwrite it, with DEVICE
-6. You will end up with one of two variations below:
+    1. Use your arrow keys to move down to line 42
+    2. You use left/right arrow keys to edit the line
+    3. The line will look like this: 
+        `SERIAL = /dev/ttyACM0`
+    4. Either confirm SERIAL equals DEVICE found above
+    **OR**
+    5. overwrite it, with DEVICE
+    6. You will end up with one of two variations below:
 
-    * SERIAL = /dev/ttyACM0
+        * SERIAL = /dev/ttyACM0
 
-    * SERIAL = /dev/ttyUSB0
+        * SERIAL = /dev/ttyUSB0
 
 *Ctrl-S to save, Ctrl-X to exit*
 
-#### 4. Compile and load Uno with blink program
+#### 5. **Compile and load Uno with blink program**
 
 ``` bash
 cd examples/blink
@@ -118,7 +121,7 @@ make flash
 
 **Confirm the Uno is blinking at a fast rate.**
 
-#### 5. Change delay and recompile/load program
+#### 6. **Change delay and recompile/load program**
 
 ```bash
 nano main.c
@@ -136,7 +139,7 @@ make flash
 
 This confirms everything is working properly.
 
-#### 6. Obtain the IP address to connect using VS Code
+#### 7. **Obtain the IP address to connect using VS Code**
 
 ```bash
 hostname -I
@@ -148,7 +151,7 @@ The first address will be a IP4 address similar to *10.0.0.223*, *192.168.1.5*, 
 
 Open *VS Code*
 
-#### 1. Install the required extensions
+#### 1. **Install the required extensions**
 
 **Please install or confirm these extensions before continuing.**
 
@@ -161,21 +164,21 @@ ms-vscode.cpptools-themes
 ms-vscode.remote-explorer
 ```
 
-#### 2. Open a remote connection
+#### 2. **Open a remote connection**
 
 In **VS Code:**
 
-1. `Shift-command/Control-P`
-2. Enter "*remo*" and click on **Remote-SSH: Connect to Host**
-3. Enter *username@IP_ADDRESS*, where:
-    * **username** is the username, you used on creating the Raspberry Pi OS image *from 1.7 above*
-    * **IP_ADDRESS** is the IP_ADDRESS of your Raspberry Pi *from 2.5 above*
-4. Click `Continue` on *Are you sure you want to continue?*
-5. Enter password
-6. Click on **Open Folder** -> **RPi_10C** -> **OK** and might need to click **Yes** to "*Trust...authors*"
-7. Use the `Explorer` to open *examples/blink/main.c*
-8. Change the *2000* on line 10, to *200* and `command/Control-s` to save the file
-9. `Shift-command/Control-B` and click on *flash*
+    1. `Shift-command/Control-P`
+    2. Enter "*remo*" and click on **Remote-SSH: Connect to Host**
+    3. Enter *username@IP_ADDRESS*, where:
+        * **username** is the username, you used on creating the Raspberry Pi OS image *from 1.7 above*
+        * **IP_ADDRESS** is the IP_ADDRESS of your Raspberry Pi *from 2.5 above*
+    4. Click `Continue` on *Are you sure you want to continue?*
+    5. Enter password
+    6. Click on **Open Folder** -> **RPi_10C** -> **OK** and might need to click **Yes** to "*Trust...authors*"
+    7. Use the `Explorer` to open *examples/blink/main.c*
+    8. Change the *2000* on line 10, to *200* and `command/Control-s` to save the file
+    9. `Shift-command/Control-B` and click on *flash*
 
 **Now the Uno will be blinking at its original fast rate.**
 
@@ -212,7 +215,7 @@ Your screen now similar to this, with *Editor* on the left and *Terminal* on the
 ## Directories
 **Note: *Library* and *examples* will be maintained identical to the [AVR_C versions](https://github.com/lkoepsel/AVR_C)**
 
-* *examples* - contains code demonstrating how to use specific functions in the Library
+* *examples* - contains code demonstrating how to use specific functions in the *Library*
 * *Library* - *AVR C Library*, specific Arduino functions rewritten in *C* such as analogRead(), analogWrite(), digitalRead(), and pinMode()
 * *templates* - template directories for each of the lab exercises. This directory must be duplicated to be used and called *dev*. **This directory is tracked by git and could be over-written in the next clone operation.**
 * *dev* - the student's version of the templates directory, where the students will make changes to the lab files. **This directory is not tracked by git and won't be overwritten.**

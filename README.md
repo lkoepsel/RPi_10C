@@ -198,16 +198,16 @@ Your screen now similar to this, with *Editor* on the left and *Terminal* on the
 * *templates* - template directories for each of the lab exercises. This directory must be duplicated to be used and called *dev*. **This directory is tracked by git and could be over-written in the next clone operation.**
 * *dev* - the student's version of the templates directory, where the students will make changes to the lab files. **This directory is not tracked by git and won't be overwritten.**
 
-## Solutions
+## Solutions to known issues
 
-### Connecting to open wireless connection (*in order of preference*)
+### 1. Connecting to an open wireless connection on initial boot
 
 ### NOTE: 251217
 A bug exists in the Pi Imager 2.0.2 software, where the password on an open wireless network is set to "". This is incorrect, it needs to be changed via auth -> key-management "none". See [OPEN NETWORK...](https://github.com/raspberrypi/rpi-imager/issues/1396). Immediate response to the bug was, it had been fixed for the next release (2.0.3). Will confirm. Then delete these solutions.
 
 In the meantime, this is the best approach and has been confirmed to work, multiple times:
 
-#### 1. Prior to initial boot, edit *network-config*
+#### Prior to initial boot, edit *network-config*
 
 Open *network-config* on the boot partition (*bootfs*) on *Windows/macOS* and change it to the following:
 
@@ -224,7 +224,8 @@ wifis:
           key-management: none
 ```
 
-#### 2. Connect via ethernet and enter
+If the solution above doesn't work, either **Option 2** or **Option 3** work, however, they require an ethernet connection to the *RPi*.
+#### Option 2. Connect via ethernet and enter
 
 ```bash
 sudo nmcli radio wifi on
@@ -233,7 +234,7 @@ sudo nmcli dev wifi connect mpc-wifi password ""
 
 Then disconnect ethernet and cycle power
 
-#### 3. Connect via ethernet and use `sudo nmtui` to activate the mpc-wifi connection.
+#### Option 3. Connect via ethernet and use `sudo nmtui` to activate the mpc-wifi connection.
 
 Then disconnect ethernet and cycle power
 

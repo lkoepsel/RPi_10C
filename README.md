@@ -202,6 +202,11 @@ Your screen now similar to this, with *Editor* on the left and *Terminal* on the
 
 ### Connecting to initial wireless connection (*in order of preference*)
 
+### NOTE: 251217
+Filed bug with github/pi_imager and immediate response was the bug had been fixed for the next release (2.0.3). Will confirm. Then delete these solutions.
+
+In the meantime, solution 1, is the best approach and has been confirmed multiple times.
+
 #### 1. Prior to initial boot, edit *network-config*
 
 Open *network-config* on the boot partition (*bootfs*) on *Windows/macOS* and change it to the following:

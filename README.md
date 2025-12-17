@@ -13,7 +13,7 @@ These instructions assume you already have an *Arduino Uno R3* (or similar micro
 The approach this class follows is to use a standardized platform running the *C* tool chain. This removes the pain of having to maintain documentation and support for each of the major computing platforms, *macOS*, *Windows* and *Linux*. Instead, the platform will be an inexpensive **Raspberry Pi (RPi)** running *Raspberry Pi OS* with all of the required programs pre-installed.
 
 ### VS Code
-In order to use this content you need to have [**VS Code**](https://code.visualstudio.com) installed on **your** computer or a computer you will be using in class. We will use both the *code editor* and command line interface (*CLI*) or *terminal*, connected remotely to the  RPi.
+In order to use this content you need to have [**VS Code**](https://code.visualstudio.com) installed on **your** computer or a computer you will be using in class. We will use both the *VS Code editor* and *VS Code Terminal* or command line interface (*CLI*), connected remotely to the  RPi.
 
 ### Raspberry Pi Login
 You will also need a Raspberry Pi Connect login. You may obtain one for free [here](https://connect.raspberrypi.com).
@@ -21,10 +21,13 @@ You will also need a Raspberry Pi Connect login. You may obtain one for free [he
 ## Installation
 
 ### 1. Use Pi Imager v2.0+ for creating Raspberry Pi OS Image
+
+Before starting insert your *SD Card* or *USB Drive* for the Raspberry Pi into your computer or SD Card interface. You will need to enter the appropriate information as requested, such as your timezone, username, password etc.
+
 1. Open *Pi Imager*
 2. Select your device -> Next
 3. Select Raspberry Pi OS (other) -> Raspberry Pi OS Lite (64-bit) -> Next
-4. Select Your Storage Device -> Next
+4. Select Your Storage Device (*this will be the *SD card* or *USB Drive* from above*) -> Next
 5. Choose Hostname -> Next
 6. Select:
     * Capital city:
@@ -58,7 +61,7 @@ Your *connect* page needs to indicate it has found your Raspberry Pi as indicate
 This step will connect you to the Raspberry Pi using the *command line interface* in your browser window.
 #### 1. Connect
 
-Click on the connect button as shown above. This will open a small browser window showing the *CLI* for the *RPi*.
+Click on the connect button as shown above. This will open a small browser window showing a terminal interface or *CLI* for the *RPi*.
 
 #### 2. Copy and Paste:
 
@@ -67,6 +70,8 @@ sudo apt update && sudo apt upgrade -y &&
 sudo apt-get install gcc-avr binutils-avr avr-libc gdb-avr avrdude git tio -y &&
 git clone https://github.com/lkoepsel/RPi_10C.git
 ```
+
+Copy and paste the text above then hit return. This action will take several minutes.
 
 #### 3. Obtain Uno device address
 
@@ -79,19 +84,29 @@ Under **Device** will be something like:
 
 Copy this string, we'll refer to it as **DEVICE**.
 
+In the CLI, do the following:
 ``` bash
 cd RPi_10C
-nano env.make
-# use your arrow keys to move down to line 42
-# you can use left/right arrow keys to edit the line
-# it will look like this: 'SERIAL = /dev/ttyACM0'
-# either confirm SERIAL equals DEVICE
-# OR
-# overwrite it, with DEVICE
-# you will end up with one of two variations below
-SERIAL = /dev/ttyACM0
-SERIAL = /dev/ttyUSB0
 ```
+
+You will now be in the RPi_10C folder and will need to edit the env.make file.
+``` bash
+nano env.make
+```
+
+1. Use your arrow keys to move down to line 42
+2. You use left/right arrow keys to edit the line
+3. The line will look like this: 
+    `SERIAL = /dev/ttyACM0`
+4. Either confirm SERIAL equals DEVICE found above
+ **OR**
+5. overwrite it, with DEVICE
+6. You will end up with one of two variations below:
+
+    * SERIAL = /dev/ttyACM0
+
+    * SERIAL = /dev/ttyUSB0
+
 *Ctrl-S to save, Ctrl-X to exit*
 
 #### 4. Compile and load Uno with blink program
@@ -135,7 +150,7 @@ Open *VS Code*
 
 #### 1. Install the required extensions
 
-**Please install these extensions before continuing.**
+**Please install or confirm these extensions before continuing.**
 
 ```bash
 ms-vscode-remote.remote-containers
@@ -184,6 +199,10 @@ The recommended method to develop code using this repository is to use both *VS 
 Your screen now similar to this, with *Editor* on the left and *Terminal* on the right:
 
 ![Desired Screen Setup](./static/VSCode_both.png)
+
+1. Column contains file *Explorer*, *git* status and commands, *extension* management.
+2. Code editor
+3. Terminal or *CLI*
 
 ## Additional Sources of Information
 

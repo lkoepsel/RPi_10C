@@ -19,3 +19,5 @@ build
 /dev/*
 /dev
 ~$*
+!optiboot_atmega328.hex
+

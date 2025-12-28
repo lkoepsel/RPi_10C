@@ -10,8 +10,8 @@ The best thing to do is not change the values in the env.make file. Instead crea
 * USB_BAUD - baud rate for serial communications after programming, typically 250000UL
 * SOFT_RESET - set to 0, only set to 1 if you wish to program a specific reset button
 * LIBDIR - **must be set to  $(DEPTH)Library**
-* LIBRARY set to no_lib if you wish to have the **smallest** possible code size, all functionality must exist in current folder 
-* FLOAT - set to YES to include floating point library (default), otherwise remove YES to shrink code
+* LIBRARY **remove** YES if you wish to have the **smallest** possible code size, all functionality must exist in current folder, default is YES
+* FLOAT - set to YES to include floating point library (default), otherwise **remove** YES to shrink code
 * PROGRAMMER_TYPE - set to type of programmer for Uno, set to *arduino*
 * PROGRAMMER_ARGS - required for avrdude use  *-F -V -P $(SERIAL) -b 115200* for **Uno**
 * TOOLCHAIN - see detailed notes in env.make
@@ -66,7 +66,7 @@ Copy and paste the text below. Be sure to go to step 3!
 # To reduce code size, remove the floating point library by
 # setting 'FLOAT = ', in other words, delete the value YES
 # To further reduce code size dramatically, don't use the AVR_C library, 
-# set LIBRARY = no_lib, see examples/blink_avr
+# set LIBRARY = YES, see examples/blink_avr
 # 
 # All functions must be in avr-libc (standard library), main.c or files in folder
 # otherwise, leave blank

@@ -32,7 +32,7 @@
 # To reduce code size, remove the floating point library by
 # setting 'FLOAT = ', in other words, delete the value YES
 # To further reduce code size dramatically, don't use the AVR_C library, 
-# set LIBRARY = no_lib, see examples/blink_avr
+# set LIBRARY = , see examples/blink_avr
 # 
 # All functions must be in avr-libc (standard library), main.c or files in folder
 # otherwise, leave blank

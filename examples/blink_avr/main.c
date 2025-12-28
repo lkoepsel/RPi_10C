@@ -1,5 +1,5 @@
 //  blink_avr - uses bit setting by registers instead of digitalWrite()
-//  for smallest code size, set LIBRARY = no_lib in env.make 
+//  for smallest code size, set LIBRARY = YES in env.make 
 //   Smallest code size allows you to use a scope to confirm delay 
 //   is exactly 1 millisecondor other timing exercises.
 //   For example: (when measured):

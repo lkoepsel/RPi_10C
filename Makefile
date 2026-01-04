@@ -80,14 +80,19 @@ CFLAGS += -Wno-format
 LDFLAGS = -Wl,-Map,$(TARGET).map 
 # Optional, but often ends up with smaller code
 LDFLAGS += -Wl,--gc-sections 
-# Uncomment line below to add timestamp wrapper to printf() OR
-# Comment line below, if  undefined reference to `__wrap_printf'
-# LDFLAGS += -Wl,--wrap=printf
 # Relax shrinks code even more, but makes disassembly messy
 # LDFLAGS += -Wl,--relax
 
+# Set FLOAT = YES to add ability to print floating point
+# or if floating point numbers are not printing
 ifeq ($(FLOAT),YES)
 	LDFLAGS += -Wl,-u,vfprintf -lprintf_flt -lm  ## for floating-point printf
+endif
+
+# Set WRAP = YES to add timestamp wrapper to printf() OR
+# or if  undefined reference to `__wrap_printf'
+ifeq ($(WRAP),YES)
+	LDFLAGS += -Wl,--wrap=printf
 endif
 
 
@@ -113,7 +118,7 @@ $(TARGET).elf: $(OBJECTS)
 	$(OBJDUMP) -S $< > $@
 
 ## These targets don't have files named after them
-.PHONY: all disassemble disasm eeprom size clean squeaky_clean flash fuses
+.PHONY: all disassemble disasm eeprom size clean squeaky_clean flash fuses clean_examples
 
 
 complete: all_clean verbose
@@ -139,6 +144,7 @@ env:
 	@echo "BIN:"  $(BIN)
 	@echo "TC3_RESET:"  $(TC3_RESET)
 	@echo "SOFT_BAUD:"  $(SOFT_BAUD)
+	@echo "WRAP:"  $(WRAP)
 	@echo
 	@echo "Source files:"   $(SOURCES)
 	@echo	
@@ -147,6 +153,7 @@ help:
 	@echo "make compile - compile only (Arduino verify)"
 	@echo "make flash - show program size and flash to board (Arduino upload)"
 	@echo "make clean - delete all non-source files in folder"
+	@echo "make clean_examples - delete all non-source files from every example folder"
 	@echo "make complete - delete all .o files in folder & Library then verbose flash, for complete rebuild/upload"
 	@echo "make verbose - make flash with more programming information for debugging upload"
 	@echo "make env - print active env.make variables"
@@ -173,6 +180,16 @@ clean:
 
 all_clean:
 	rm -f *.elf *.hex *.obj *.o *.d *.eep *.lst *.lss *.sym *.map *~ *.eeprom core $(LIBDIR)/*.o
+
+clean_examples:
+	@echo "Cleaning all example directories..."
+	@for dir in $(DEPTH)examples/*/; do \
+		if [ -f "$$dir/main.c" ]; then \
+			echo "Cleaning $$dir"; \
+			(cd "$$dir" && make clean); \
+		fi \
+	done
+	@echo "All examples cleaned!"
 
 ##########------------------------------------------------------##########
 ##########              Programmer-specific details             ##########

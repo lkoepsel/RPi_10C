@@ -90,9 +90,10 @@ Copy this string, we'll refer to it as **DEVICE**.
 In the CLI, do the following:
 ``` bash
 cd RPi_10C
+cp env.def env.make
 ```
 
-You will now be in the RPi_10C folder and will need to edit the env.make file.
+You will now be in the RPi_10C folder, with a fresh version of env.make. You will need to edit the env.make file for your system.
 ``` bash
 nano env.make
 ```

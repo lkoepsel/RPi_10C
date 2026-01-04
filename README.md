@@ -260,3 +260,11 @@ Then disconnect ethernet and cycle power
 
 Then disconnect ethernet and cycle power
 
+### Setup SSH public key for github and easier sign in
+
+In the terminal:
+```bash
+# add public key for Github
+ssh-keygen -t ed25519 -C "myemailaddress.com" && eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_ed25519 && cat ~/.ssh/id_ed25519.pub
+# copy and paste the last line into the SSH key on github
+```

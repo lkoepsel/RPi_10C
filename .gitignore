@@ -19,5 +19,6 @@ build
 /dev/*
 /dev
 ~$*
+env.make
 !optiboot_atmega328.hex
 
